@@ -1,6 +1,5 @@
 import session from "express-session";
 import MySQLStore from "express-mysql-session";
-// import { dbConfig } from "../db/index.js";
 
 const SessionStore = MySQLStore(session);
 

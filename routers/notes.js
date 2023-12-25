@@ -3,7 +3,7 @@ import notes from "../controllers/notes.js";
 
 const router = express.Router({ mergeParams: true });
 
-router.get("/", (req, res) => notes.findAll);
-router.get("/:id", (req, res) => notes.findOne);
+router.get("/", notes.findAll);
+router.get("/:id", notes.findOne);
 
 export default router;

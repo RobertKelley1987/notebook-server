@@ -3,7 +3,9 @@ import users from "../controllers/users.js";
 
 const router = express.Router({ mergeParams: true });
 
-router.post("/signin", (req, res) => users.signIn);
-router.post("/signup", (req, res) => users.signUp);
+router.post("/signin", users.signIn);
+router.post("/signup", users.signUp);
+router.post("/signout", users.signOut);
+router.get("/sessions", users.getSession);
 
 export default router;

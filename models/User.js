@@ -11,18 +11,31 @@ class User {
     const userId = uuid();
     const hashedPassword = await bcrypt.hash(password, 12);
 
-    const [rows] = this.db.query(
-      "INSERT INTO users (id, username, password) VALUES(?, ?)",
+    const result = await this.db.query(
+      "INSERT INTO users (id, username, password) VALUES(?, ?, ?)",
       [userId, username, hashedPassword]
     );
-    return rows;
+
+    if (result.length) {
+      return this.findById(userId);
+    } else {
+      return { error: "Failed to create new user in db." };
+    }
   }
 
-  findOne(username) {
-    const [rows] = this.db.query("SELECT * FROM users WHERE username = ?", [
-      username,
+  async findByUsername(username) {
+    const [rows] = await this.db.query(
+      "SELECT * FROM users WHERE username = ?",
+      [username]
+    );
+    return rows[0];
+  }
+
+  async findById(id) {
+    const [rows] = await this.db.query("SELECT * FROM users WHERE id = ?", [
+      id,
     ]);
-    return rows;
+    return rows[0];
   }
 }
 

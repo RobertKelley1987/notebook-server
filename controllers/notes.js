@@ -1,7 +1,7 @@
 import Note from "../models/Note.js";
 import ExpressError from "../util/express-error.js";
 
-const notesController = {
+const notes = {
   findOne(req, res) {
     const { id } = req.params;
     const foundNote = Note.findOne(id);
@@ -21,4 +21,4 @@ const notesController = {
   },
 };
 
-export default notesController;
+export default notes;
