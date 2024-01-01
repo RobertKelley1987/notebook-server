@@ -1,4 +1,4 @@
-import ExpressError from "./util/express-error";
+import ExpressError from "./util/express-error.js";
 
 export function isLoggedIn(req, res, next) {
   if (req.session.userId) {

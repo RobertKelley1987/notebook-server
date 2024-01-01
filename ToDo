@@ -1,0 +1,2 @@
+- Notes in db need to be provided with an updated_at DateTime
+- Try to throw errors from data models, just to be consistent
